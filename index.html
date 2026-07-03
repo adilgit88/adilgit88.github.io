@@ -1,1 +1,283 @@
-<h1>Adil Patel — CS 499 ePortfolio</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adil Patel- CS 499 ePortfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d1117;
+    --panel:#141b24;
+    --panel-2:#1a232e;
+    --line:#243040;
+    --ink:#e6edf3;
+    --muted:#8b98a8;
+    --dim:#5c6b7a;
+    --accent:#3fb950;      /* status-green: "up / secure" */
+    --accent-2:#58a6ff;    /* link blue */
+    --warn:#d29922;        /* pending */
+    --radius:10px;
+    --maxw:960px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, rgba(63,185,80,.06), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-2);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* Top status bar */
+  .statusbar{
+    border-bottom:1px solid var(--line);
+    background:rgba(13,17,23,.85);
+    backdrop-filter:blur(6px);
+    position:sticky;top:0;z-index:10;
+    font-family:"JetBrains Mono",monospace;
+    font-size:12.5px;color:var(--muted);
+  }
+  .statusbar .wrap{display:flex;align-items:center;gap:18px;height:44px;flex-wrap:wrap;}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 3px rgba(63,185,80,.15);display:inline-block;margin-right:7px;}
+  .statusbar .sep{color:var(--dim);}
+  .statusbar nav{margin-left:auto;display:flex;gap:16px;}
+  .statusbar nav a{color:var(--muted);}
+  .statusbar nav a:hover{color:var(--ink);text-decoration:none;}
+
+  /* Hero */
+  header.hero{padding:80px 0 56px;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.06em;
+    color:var(--accent);margin:0 0 18px;
+  }
+  h1{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;
+    font-size:clamp(34px,6vw,58px);line-height:1.05;margin:0 0 20px;letter-spacing:-.02em;
+  }
+  h1 .accent{color:var(--muted);font-weight:500;}
+  .lede{font-size:clamp(16px,2.2vw,19px);color:var(--muted);max-width:60ch;margin:0 0 28px;}
+  .meta{
+    font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--dim);
+    display:flex;gap:22px;flex-wrap:wrap;
+  }
+  .meta b{color:var(--ink);font-weight:500;}
+
+  /* Section headings */
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 28px;}
+  .sec-num{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:14px;}
+  h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,3.4vw,30px);
+    margin:0;font-weight:600;letter-spacing:-.01em;}
+  .sec-sub{color:var(--muted);max-width:65ch;margin:-14px 0 30px;}
+
+  /* Self-assessment / code review feature cards */
+  .feature{
+    display:grid;grid-template-columns:1fr;gap:0;
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--panel);overflow:hidden;
+  }
+  .feature .body{padding:26px 28px;}
+  .feature h3{font-family:"Space Grotesk",sans-serif;margin:0 0 10px;font-size:20px;font-weight:600;}
+  .feature p{margin:0 0 18px;color:var(--muted);}
+
+  /* Enhancement grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+  .card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--panel);padding:24px;display:flex;flex-direction:column;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .card:hover{border-color:#33465c;transform:translateY(-2px);}
+  .card .tag{
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.05em;
+    color:var(--accent);margin:0 0 14px;text-transform:uppercase;
+  }
+  .card h3{font-family:"Space Grotesk",sans-serif;font-size:18px;margin:0 0 8px;font-weight:600;}
+  .card .artifact{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--dim);margin:0 0 12px;}
+  .card p{color:var(--muted);font-size:14.5px;margin:0 0 18px;flex:1;}
+  .outcomes{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px;}
+  .pill{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:2px 9px;background:var(--panel-2);}
+
+  /* Buttons / links row */
+  .links{display:flex;gap:14px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:13px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--line);border-radius:7px;padding:8px 14px;
+    color:var(--ink);background:var(--panel-2);
+  }
+  .btn:hover{border-color:var(--accent);color:var(--ink);text-decoration:none;}
+  .btn.ghost{background:transparent;}
+  .pending{color:var(--warn);}
+  .soon{color:var(--muted);cursor:default;font-size:12.5px;}
+  .soon:hover{border-color:var(--line);text-decoration:none;}
+  .links .planned{color:var(--dim);cursor:default;}
+  .links .planned:hover{text-decoration:none;color:var(--dim);}
+
+  footer{padding:44px 0 60px;color:var(--dim);font-family:"JetBrains Mono",monospace;font-size:12.5px;}
+  footer a{color:var(--muted);}
+
+  /* small helper note for placeholders */
+  .todo{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--warn);}
+
+  @media (max-width:560px){
+    .statusbar nav{display:none;}
+    header.hero{padding:56px 0 40px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="statusbar">
+    <div class="wrap">
+      <span><span class="dot"></span>portfolio: live</span>
+      <span class="sep">/</span>
+      <span>adilgit88.github.io</span>
+      <nav>
+        <a href="#about">about</a>
+        <a href="#review">code review</a>
+        <a href="#work">enhancements</a>
+        <a href="#contact">contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero" id="about">
+    <div class="wrap">
+      <p class="eyebrow">CS 499 · Computer Science Capstone · SNHU</p>
+      <h1>Adil Patel<br><span class="accent">software engineering, moving toward security</span></h1>
+      <p class="lede">
+        Network engineer turned software developer. This ePortfolio documents my growth across
+        software design, algorithms and data structures, and databases — with each enhancement
+        hardening a real application against the ways it could be misused.
+      </p>
+      <div class="meta">
+        <span><b>Focus</b> full-stack · secure coding</span>
+        <span><b>Languages</b> Python · JavaScript · TypeScript</span>
+        <span><b>Background</b> 4 yrs network engineering</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Professional Self-Assessment -->
+  <section id="assessment">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Professional Self-Assessment</h2></div>
+      <p class="sec-sub">
+        The formal introduction to this portfolio: how the Computer Science program shaped my
+        strengths, my goals, and the way my artifacts fit together as one body of work.
+      </p>
+      <div class="feature">
+        <div class="body">
+          <h3>Read the self-assessment</h3>
+          <p>
+            Covers collaborating in a team environment, communicating with stakeholders, data
+            structures and algorithms, software engineering and databases, and security drawing on
+            both my coursework and my prior networking career.
+          </p>
+          <div class="links">
+            <span class="btn ghost soon">Coming in Module 7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Review -->
+  <section id="review">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Informal Code Review</h2></div>
+      <p class="sec-sub">
+        A recorded walkthrough of the original artifacts: existing functionality, weaknesses in
+        structure, efficiency, and security, and the plan for each enhancement.
+      </p>
+      <div class="feature">
+        <div class="body">
+          <h3>Watch the code review</h3>
+          <p>A recorded walkthrough of both artifacts before any enhancements were made.</p>
+          <div class="links">
+            <span class="btn ghost soon">Coming in Module 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhancements -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Enhanced Artifacts</h2></div>
+      <p class="sec-sub">
+        Two artifacts, three enhancements. Each will link to the original code, the enhanced code,
+        and a narrative as the milestones are completed through the term.
+      </p>
+      <div class="grid">
+
+        <div class="card">
+          <p class="tag">Software Design &amp; Engineering</p>
+          <h3>Authentication &amp; layered architecture</h3>
+          <p class="artifact">artifact: Shelter Dashboard · CS 340 · Python</p>
+          <p>
+            Refactored the animal-shelter dashboard into data-access, service, and presentation
+            layers and added login with hashed passwords and role-based access control.
+          </p>
+          <div class="outcomes"><span class="pill">Outcome 4</span><span class="pill">Outcome 5</span><span class="pill">Outcome 1</span></div>
+          <div class="links">
+            <span class="planned">original</span><span class="planned">enhanced</span><span class="planned">narrative</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="tag">Algorithms &amp; Data Structures</p>
+          <h3>Hash table &amp; balanced BST</h3>
+          <p class="artifact">artifact: Course Planner · CS 300 · C++</p>
+          <p>
+            Reworked course storage around a hash table for O(1) lookups and a balanced BST for
+            ordered traversal, with prerequisite and input validation documenting each trade-off.
+          </p>
+          <div class="outcomes"><span class="pill">Outcome 3</span><span class="pill">Outcome 4</span></div>
+          <div class="links">
+            <span class="planned">original</span><span class="planned">enhanced</span><span class="planned">narrative</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="tag">Databases</p>
+          <h3>Validated, secured data layer</h3>
+          <p class="artifact">artifact: Shelter Dashboard · CS 340 · MongoDB</p>
+          <p>
+            Added a users collection with a unique index and hashed passwords, schema validation,
+            indexed filter fields, and parameterized queries to close NoSQL-injection risk.
+          </p>
+          <div class="outcomes"><span class="pill">Outcome 5</span><span class="pill">Outcome 4</span><span class="pill">Outcome 1</span></div>
+          <div class="links">
+            <span class="planned">original</span><span class="planned">enhanced</span><span class="planned">narrative</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div>Adil Patel · CS 499 ePortfolio · Southern New Hampshire University</div>
+      <div style="margin-top:8px;">
+        <a href="https://github.com/adilgit88" target="_blank" rel="noopener">github.com/adilgit88</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
